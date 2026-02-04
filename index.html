@@ -13,7 +13,7 @@
       --bg1: #ffd6e7;
       --bg2: #ffeef6;
       --card: #ffffffcc;
-      --yes: #ff3b7a;
+      --yes: #ff3d7b;
       --yesHover: #ff1f68;
     }
 
@@ -122,6 +122,10 @@
       display: block;
     }
 
+    iframe {
+      display: none;
+    }
+
     @keyframes pop {
       from { transform: scale(.96); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
@@ -177,16 +181,17 @@
     </section>
 
     <!-- HINT -->
-    <div class="hint" id="hint">Tu peux essayer de cliquer sur non.. si t'y arrives 👀</div>
+    <div class="hint" id="hint">Codé avec amour et un peu de caféine pendant que tu révisais</div>
 
     <section class="result" id="result">
       <h2>Je savais que t'allais dire oui !!😍🫶🏻</h2>
+      <button id="formBtn" style="margin: 20px; background: var(--yes); color: #fff; position: static; transform: none;">Entrer dans notre bulle</button>
       <img
         class="fireworks"
         src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWMzbXY2bHBkeTZ4dnpzNGc2OWxpNXFrbGlwaGd4NmprcGd3bWFkYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/CVg1ByN0k7JXcqqiDC/giphy.gif"
         alt="Fireworks"
-      />    
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdr1eSQM90yq8ux9Z7laPPVF-b7ojhhzESsruUDhKBEBCgW2Q/viewform?embedded=true" width="640" height="250" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
+      />
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdr1eSQM90yq8ux9Z7laPPVF-b7ojhhzESsruUDhKBEBCgW2Q/viewform?embedded=true" width="640" height="640" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
     </section>
   </main>
 
@@ -291,10 +296,22 @@
     /* ---------- YES CLICK ---------- */
     yesBtn.addEventListener("click", () => {
       zone.style.display = "none";
-      hint.style.display = "none";     // HIDE THE HINT
+      hint.style.display = "none";
+      document.querySelector("h1").style.display = "none";
+      document.querySelector(".art").style.display = "none";
       result.style.display = "block";
       resizeConfettiCanvas();
       fullScreenConfetti();
+    });
+
+    // Form button click
+    document.getElementById("formBtn").addEventListener("click", () => {
+      document.querySelector(".art").style.display = "none";
+      document.querySelector("h1").style.display = "none";
+      result.querySelector("h2").style.display = "none";
+      result.querySelector(".fireworks").style.display = "none";
+      document.getElementById("formBtn").style.display = "none";
+      result.querySelector("iframe").style.display = "block";
     });
   </script>
 </body>
